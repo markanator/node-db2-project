@@ -142,6 +142,32 @@ router.put('/:vin', function _callee4(req, res, next) {
     }
   }, null, null, [[0, 6]]);
 });
+router["delete"]('/:vin', function _callee5(req, res, next) {
+  return regeneratorRuntime.async(function _callee5$(_context5) {
+    while (1) {
+      switch (_context5.prev = _context5.next) {
+        case 0:
+          _context5.prev = 0;
+          _context5.next = 3;
+          return regeneratorRuntime.awrap(db('cars').where('vin', req.params.vin).del());
+
+        case 3:
+          return _context5.abrupt("return", res.status(200).json({
+            message: 'Deleted!'
+          }));
+
+        case 6:
+          _context5.prev = 6;
+          _context5.t0 = _context5["catch"](0);
+          return _context5.abrupt("return", next(_context5.t0));
+
+        case 9:
+        case "end":
+          return _context5.stop();
+      }
+    }
+  }, null, null, [[0, 6]]);
+});
 
 function validateCarReqBody() {
   return function (req, res, next) {

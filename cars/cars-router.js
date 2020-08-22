@@ -53,6 +53,18 @@ router.put('/:vin', async (req, res, next) => {
     }
 });
 
+router.delete('/:vin', async (req, res, next) => {
+    try {
+        await db('cars').where('vin', req.params.vin).del();
+
+        return res.status(200).json({
+            message: 'Deleted!',
+        });
+    } catch (err) {
+        return next(err);
+    }
+});
+
 function validateCarReqBody() {
     return (req, res, next) => {
         if (!req.body) {
